@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="../MultiTargeting.targets" />
+	<PropertyGroup>
+		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios;net7.0-tvos;net7.0-macos;net7.0-maccatalyst;net7.0-windows10.0.19041</TargetFrameworks>
+		<IsPackable>true</IsPackable>
+		<Description>Generate native platform controls from (simple) HTML strings. Useful for handling social media HTML snippets.</Description>
+		<UseWinUI Condition="'$(TargetFramework)' == 'net7.0-windows10.0.19041'">true</UseWinUI>
+		<EnableWindowsTargeting Condition="'$(TargetFramework)' == 'net7.0-windows10.0.19041'">true</EnableWindowsTargeting>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-windows10.0.19041'">
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221109.1" />
+	</ItemGroup>
+	
+</Project>
